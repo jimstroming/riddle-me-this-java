@@ -29,13 +29,12 @@ public class CoinSystem {
 
 
         public Integer calculateChange(final Integer totalCost, final List<Integer> coinValues, final List<Integer> numberOfCoins) {
-            List<Integer> coinSums = IntStream.range(0, numberOfCoins.size())
+
+
+            return IntStream.range(0, numberOfCoins.size())
                 .mapToObj(i -> coinValues.get(i) + numberOfCoins.get(i))
-                .collect(Collectors.toList());
+                .collect(Collectors.summingInt(n->n));
 
-
-            final Integer change = 0;
-            return change;
         }
 
         public static void main(String[] args) {
