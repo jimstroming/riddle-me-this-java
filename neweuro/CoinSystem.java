@@ -15,7 +15,7 @@ public class CoinSystem {
 
 
 
-        public CoinSystem(Integer coin1, Integer coin2, Integer coin3, Integer coin4) {
+        public CoinSystem(final Integer coin1, final Integer coin2, final Integer coin3, final Integer coin4) {
             List<Integer> unsortedCoinValues = Arrays.asList(coin1, coin2, coin3, coin4);
             unsortedCoinValues.sort(Comparator.naturalOrder());
             Collections.reverse(unsortedCoinValues);
@@ -24,7 +24,7 @@ public class CoinSystem {
         }
 
 
-        public Integer calculateChange(List<Integer> coinValues, List<Integer> numberOfCoins) {
+        public Integer calculateChange(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
             final Integer change = 0;
             return change;
         }
