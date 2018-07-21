@@ -10,21 +10,21 @@ import java.util.Collections;
 
 public class CoinSystem {
 
-        final private List<Integer> coinSystem;
+        final private List<Integer> coinValues;
 
 
 
 
         public CoinSystem(Integer coin1, Integer coin2, Integer coin3, Integer coin4) {
-            List<Integer> unsortedCoinSystem = Arrays.asList(coin1, coin2, coin3, coin4);
-            unsortedCoinSystem.sort(Comparator.naturalOrder());
-            Collections.reverse(unsortedCoinSystem);
-            coinSystem = unsortedCoinSystem;
-            coinSystem.forEach(System.out::println);
+            List<Integer> unsortedCoinValues = Arrays.asList(coin1, coin2, coin3, coin4);
+            unsortedCoinValues.sort(Comparator.naturalOrder());
+            Collections.reverse(unsortedCoinValues);
+            coinValues = unsortedCoinValues;
+            coinValues.forEach(System.out::println);
         }
 
 
-        public Integer calculateChange(Integer salePrice) {
+        public Integer calculateChange(List<Integer> coinValues, List<Integer> numberOfCoins) {
             final Integer change = 0;
             return change;
         }
