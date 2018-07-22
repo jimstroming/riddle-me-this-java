@@ -50,25 +50,33 @@ public class CoinSystem {
                 .mapToObj(i -> coinValues.get(i) * numberOfCoins.get(i))
                 .collect(Collectors.summingInt(n->n));
 
+        }
 
+
+
+        public Integer calculateNumberOfCoins(final List<Integer> numberOfCoins) {
+           
+            return numberOfCoins.stream().reduce(0, Integer::sum);
 
         }
+
 
         public static void main(String[] args) {
 
             final CoinSystem coinSystem = new CoinSystem(1,5,10,25);
 
-  
             System.out.println("Coins should be 97 cents in 3 quarters, 2 dimes, 2 pennies.");  
 
-
             final List<Integer> ninetySevenCents = Arrays.asList(3, 2, 0, 2);
-            final List<Integer> coinValues = Arrays.asList(25, 10, 5, 1);
-            
+            final List<Integer> coinValues = Arrays.asList(25, 10, 5, 1);            
 
             final Integer change = coinSystem.calculateCoinTotal(coinValues, ninetySevenCents);
                        
             System.out.println("Total is " + change);
+
+            System.out.println("This should be 7 coins");
+
+            System.out.println("The number of coins is " + coinSystem.calculateNumberOfCoins(ninetySevenCents)); 
 
 
         }
