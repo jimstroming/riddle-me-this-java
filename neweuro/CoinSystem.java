@@ -17,7 +17,7 @@ public class CoinSystem {
         final private List<Integer> coinValues;
         final private List<List<Integer>> usefulCoinOrders;
 
-
+        
 
 
         public CoinSystem(final Integer coin1, final Integer coin2, final Integer coin3, final Integer coin4) {
@@ -44,7 +44,16 @@ public class CoinSystem {
         }
 
 
-        public Integer calculateCoinsToReachTarget(final Integer target, final List<Integer> coinOrder) {
+
+        private Integer calculateMinCoinsToReachTargetForCoinOrders(final Integer target, final List<List<Integer>> coinOrders) {
+            return coinOrders.stream()
+                             .mapToInt(i -> calculateCoinsToReachTarget(target, i))       
+                             .min()
+                             .orElse(10000);
+        }
+
+
+        private Integer calculateCoinsToReachTarget(final Integer target, final List<Integer> coinOrder) {
 
             Integer totalNumberCoins = 0;
             Integer remainder = target;
@@ -53,11 +62,11 @@ public class CoinSystem {
             Integer numberOfCurrentCoin;           
 
             while (remainder > 0) {
-                System.out.println("Remainder is " + remainder);
+                // System.out.println("Remainder is " + remainder);
                 currentCoin = coinOrder.get(coinNumber);
-                System.out.println("currentCoin is " + currentCoin);
+                // System.out.println("currentCoin is " + currentCoin);
                 numberOfCurrentCoin = calculateNumberOfCoinsLessThanEqualTarget(remainder, currentCoin);
-                System.out.println("numberOfCurrentCoin is " + numberOfCurrentCoin);
+                // System.out.println("numberOfCurrentCoin is " + numberOfCurrentCoin);
                 totalNumberCoins += numberOfCurrentCoin;
                 remainder -= numberOfCurrentCoin * currentCoin; 
                 coinNumber += 1;
@@ -67,7 +76,7 @@ public class CoinSystem {
 
         }
 
-        public Integer calculateCoinTotal(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
+        private Integer calculateCoinTotal(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
 
             return IntStream.range(0, numberOfCoins.size())
                 .mapToObj(i -> coinValues.get(i) * numberOfCoins.get(i))
@@ -76,14 +85,14 @@ public class CoinSystem {
         }
 
 
-        public Integer calculateNumberOfCoinsLessThanEqualTarget(final Integer target, final Integer coinValue) {
+        private Integer calculateNumberOfCoinsLessThanEqualTarget(final Integer target, final Integer coinValue) {
 
             return target / coinValue;
 
         }
 
 
-        public Integer calculateNumberOfCoins(final List<Integer> numberOfCoins) {
+        private Integer calculateNumberOfCoins(final List<Integer> numberOfCoins) {
            
             return numberOfCoins.stream().reduce(0, Integer::sum);
 
@@ -109,7 +118,10 @@ public class CoinSystem {
 
             System.out.println("11 cents is > " + coinSystem.calculateNumberOfCoinsLessThanEqualTarget(11, 5) + " nickels");
 
-            System.out.println(coinSystem.calculateCoinsToReachTarget(97, coinValues) + " coins to reach 97 cents");
+            System.out.println(coinSystem.calculateCoinsToReachTarget(97, coinValues) + " coins to reach 97 cents with 25,10,5,1");
+
+            System.out.println(coinSystem.calculateMinCoinsToReachTargetForCoinOrders(97, coinSystem.usefulCoinOrders)
+                               + " coins to reach 97 cents with any useful order of 25,10,5,1");
 
 
         }
