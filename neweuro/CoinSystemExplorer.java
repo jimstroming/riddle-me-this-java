@@ -18,17 +18,28 @@ public class CoinSystemExplorer {
     private final Integer minChange = 1;
 
     public List<Integer> calculateBestCoinCombination() {
+
+        Integer leastCoinsRequired = 10000;
+        List<Integer> bestCombination = Arrays.asList(0,0,0,0,leastCoinsRequired);
  
         Integer coin4 = 1;
         for(Integer coin1 = 99; coin1 > 3; coin1--){
             for(Integer coin2 = coin1 - 1; coin2 > 2; coin2--) {
                 for (Integer coin3 = coin2 - 1; coin3 > 1; coin3--) {
+                      CoinSystem coinSystem = new CoinSystem(coin1, coin2, coin3, coin4);
+                      Integer coinsRequired = maxCoinsRequired(coinSystem); 
+
+                      if (coinsRequired < leastCoinsRequired) {
+                          bestCombination = Arrays.asList(coin1, coin2, coin3, coin4, coinsRequired);
+                          leastCoinsRequired = coinsRequired;
+                      }
+
                       System.out.println("dummy");             
                 }  
             }
         }
 
-        return Arrays.asList(25,10,5,1,9);
+        return bestCombination;
 
     }
 
