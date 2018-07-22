@@ -14,6 +14,9 @@ import java.util.Collections;
 
 public class CoinSystemExplorer {
 
+    private final Integer maxChange = 99;
+    private final Integer minChange = 1;
+
     public List<Integer> calculateBestCoinCombination() {
 
 
@@ -26,7 +29,10 @@ public class CoinSystemExplorer {
             final CoinSystemExplorer explorer = new CoinSystemExplorer();
             final List<Integer> optimalCoinSet = explorer.calculateBestCoinCombination();
             System.out.println("Best combination uses these coins:");
-            System.out.println(optimalCoinSet.get(0) +", " + optimalCoinSet.get(1));
+            System.out.println(optimalCoinSet.get(0) + ", " + optimalCoinSet.get(1) +", " 
+                             + optimalCoinSet.get(2) + ", " + optimalCoinSet.get(3));
+            System.out.println("With this combination, change between " + explorer.minChange + " and " 
+                             + explorer.maxChange + " cents can be made with " + optimalCoinSet.get(4) +" coins."); 
         }
 
 
