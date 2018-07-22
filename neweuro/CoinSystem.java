@@ -11,21 +11,31 @@ import java.util.Comparator;
 import java.util.Collections;
 
 
+// Solution to the 538 Riddler Expres
+
+// https://fivethirtyeight.com/features/damn-the-torpedoes-two-puzzles-ahead/
+
+// "From Brett Andersen, some numismatic numerology:"
+// "I was recently traveling in Europe and struck by the number of coins the euro uses." 
+// "They have 2 euro, 1 euro, 50 cent, 20 cent, 10 cent, 5 cent, 2 cent and 1 cent coins." 
+// "This got me thinking: If Riddler Nation needed to make change (anywhere from 0.01 to 0.99)" 
+// "and was establishing its own mint, what values of coins would be ideal to yield the smallest"
+// "number of coins in any transaction?"
+// "When picking values, let’s say we’re ditching the Europeans and limiting our mint to"
+// four different coin denominations — replacing the current common American ones of penny, nickel, dime and quarter."
+
+
 
 public class CoinSystem {
 
         final private List<Integer> coinValues;
         final public List<List<Integer>> usefulCoinOrders;
 
-        
-
-
         public CoinSystem(final Integer coin1, final Integer coin2, final Integer coin3, final Integer coin4) {
             List<Integer> unsortedCoinValues = Arrays.asList(coin1, coin2, coin3, coin4);
             unsortedCoinValues.sort(Comparator.naturalOrder());
             Collections.reverse(unsortedCoinValues);
             this.coinValues = unsortedCoinValues;
-            this.coinValues.forEach(System.out::println);
 
             final Integer coinA = coinValues.get(0);
             final Integer coinB = coinValues.get(1);
@@ -62,11 +72,8 @@ public class CoinSystem {
             Integer numberOfCurrentCoin;           
 
             while (remainder > 0) {
-                // System.out.println("Remainder is " + remainder);
                 currentCoin = coinOrder.get(coinNumber);
-                // System.out.println("currentCoin is " + currentCoin);
                 numberOfCurrentCoin = calculateNumberOfCoinsLessThanEqualTarget(remainder, currentCoin);
-                // System.out.println("numberOfCurrentCoin is " + numberOfCurrentCoin);
                 totalNumberCoins += numberOfCurrentCoin;
                 remainder -= numberOfCurrentCoin * currentCoin; 
                 coinNumber += 1;

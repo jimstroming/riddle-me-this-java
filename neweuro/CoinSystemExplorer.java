@@ -33,8 +33,7 @@ public class CoinSystemExplorer {
                           bestCombination = Arrays.asList(coin1, coin2, coin3, coin4, coinsRequired);
                           leastCoinsRequired = coinsRequired;
                       }
-
-                      System.out.println("dummy");             
+            
                 }  
             }
         }
@@ -64,10 +63,6 @@ public class CoinSystemExplorer {
         System.out.println("With this combination, change between " + explorer.minChange + " and " 
                          + explorer.maxChange + " cents can be made with " + optimalCoinSet.get(4) +" coins."); 
 
-
-        final CoinSystem coinSystem = new CoinSystem(1,5,10,25);
-
-        System.out.println("Max number of coins for change with 1,5,10,25 is " + explorer.maxCoinsRequired(coinSystem));
     }
 
 
