@@ -15,6 +15,7 @@ import java.util.Collections;
 public class CoinSystem {
 
         final private List<Integer> coinValues;
+        final private List<List<Integer>> usefulCoinOrders;
 
 
 
@@ -23,8 +24,23 @@ public class CoinSystem {
             List<Integer> unsortedCoinValues = Arrays.asList(coin1, coin2, coin3, coin4);
             unsortedCoinValues.sort(Comparator.naturalOrder());
             Collections.reverse(unsortedCoinValues);
-            coinValues = unsortedCoinValues;
+            this.coinValues = unsortedCoinValues;
             coinValues.forEach(System.out::println);
+
+            final Integer coinA = coinValues.get(0);
+            final Integer coinB = coinValues.get(1);
+            final Integer coinC = coinValues.get(2);
+            final Integer coinLowest = coinValues.get(3);
+
+            final List<Integer> abcd = Arrays.asList(coinA, coinB, coinC, coinLowest);
+            final List<Integer> acbd = Arrays.asList(coinA, coinC, coinB, coinLowest);
+            final List<Integer> bacd = Arrays.asList(coinB, coinA, coinC, coinLowest);
+            final List<Integer> bcad = Arrays.asList(coinB, coinC, coinA, coinLowest);
+            final List<Integer> cabd = Arrays.asList(coinC, coinA, coinB, coinLowest);
+            final List<Integer> cbad = Arrays.asList(coinC, coinB, coinA, coinLowest);
+
+            this.usefulCoinOrders = Arrays.asList(abcd, acbd, bacd, bcad, cabd, cbad);
+
         }
 
 
