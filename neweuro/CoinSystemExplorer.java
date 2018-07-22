@@ -14,7 +14,20 @@ import java.util.Collections;
 
 public class CoinSystemExplorer {
 
+    public List<Integer> calculateBestCoinCombination() {
 
+
+        return Arrays.asList(25,10,5,1,9);
+
+    }
+
+        public static void main(String[] args) {
+        
+            final CoinSystemExplorer explorer = new CoinSystemExplorer();
+            final List<Integer> optimalCoinSet = explorer.calculateBestCoinCombination();
+            System.out.println("Best combination uses these coins:");
+            System.out.println(optimalCoinSet.get(0) +", " + optimalCoinSet.get(1));
+        }
 
 
 }
