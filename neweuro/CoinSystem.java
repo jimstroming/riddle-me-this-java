@@ -44,6 +44,29 @@ public class CoinSystem {
         }
 
 
+        public Integer calculateCoinsToReachTarget(final Integer target, final List<Integer> coinOrder) {
+
+            Integer totalNumberCoins = 0;
+            Integer remainder = target;
+            Integer coinNumber = 0;
+            Integer currentCoin; 
+            Integer numberOfCurrentCoin;           
+
+            while (remainder > 0) {
+                System.out.println("Remainder is " + remainder);
+                currentCoin = coinOrder.get(coinNumber);
+                System.out.println("currentCoin is " + currentCoin);
+                numberOfCurrentCoin = calculateNumberOfCoinsLessThanEqualTarget(remainder, currentCoin);
+                System.out.println("numberOfCurrentCoin is " + numberOfCurrentCoin);
+                totalNumberCoins += numberOfCurrentCoin;
+                remainder -= numberOfCurrentCoin * currentCoin; 
+                coinNumber += 1;
+            }
+
+            return totalNumberCoins;                    
+
+        }
+
         public Integer calculateCoinTotal(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
 
             return IntStream.range(0, numberOfCoins.size())
@@ -53,7 +76,7 @@ public class CoinSystem {
         }
 
 
-        public Integer calculateNumberOfCoinsLessThanTarget(final Integer target, final Integer coinValue) {
+        public Integer calculateNumberOfCoinsLessThanEqualTarget(final Integer target, final Integer coinValue) {
 
             return target / coinValue;
 
@@ -84,7 +107,9 @@ public class CoinSystem {
 
             System.out.println("The number of coins is " + coinSystem.calculateNumberOfCoins(ninetySevenCents)); 
 
-            System.out.println("11 cents is > " + coinSystem.calculateNumberOfCoinsLessThanTarget(11, 5) + " nickels");
+            System.out.println("11 cents is > " + coinSystem.calculateNumberOfCoinsLessThanEqualTarget(11, 5) + " nickels");
+
+            System.out.println(coinSystem.calculateCoinsToReachTarget(97, coinValues) + " coins to reach 97 cents");
 
 
         }
