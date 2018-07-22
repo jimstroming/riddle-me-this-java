@@ -15,7 +15,7 @@ import java.util.Collections;
 public class CoinSystem {
 
         final private List<Integer> coinValues;
-        final private List<List<Integer>> usefulCoinOrders;
+        final public List<List<Integer>> usefulCoinOrders;
 
         
 
@@ -45,8 +45,8 @@ public class CoinSystem {
 
 
 
-        private Integer calculateMinCoinsToReachTargetForCoinOrders(final Integer target, final List<List<Integer>> coinOrders) {
-            return coinOrders.stream()
+        public Integer calculateMinCoinsToReachTargetForCoinOrders(final Integer target) {
+            return this.usefulCoinOrders.stream()
                              .mapToInt(i -> calculateCoinsToReachTarget(target, i))       
                              .min()
                              .orElse(10000);
@@ -120,7 +120,7 @@ public class CoinSystem {
 
             System.out.println(coinSystem.calculateCoinsToReachTarget(97, coinValues) + " coins to reach 97 cents with 25,10,5,1");
 
-            System.out.println(coinSystem.calculateMinCoinsToReachTargetForCoinOrders(97, coinSystem.usefulCoinOrders)
+            System.out.println(coinSystem.calculateMinCoinsToReachTargetForCoinOrders(97)
                                + " coins to reach 97 cents with any useful order of 25,10,5,1");
 
 

@@ -32,16 +32,27 @@ public class CoinSystemExplorer {
 
     }
 
-        public static void main(String[] args) {
+    
+    public Integer maxCoinsRequired(CoinSystem coinSystem) {
+
+        return IntStream.rangeClosed(minChange, maxChange)
+                        .map(i -> coinSystem.calculateMinCoinsToReachTargetForCoinOrders(i))      
+                        .max()
+                        .orElse(0);
+
+    }
+
+
+    public static void main(String[] args) {
         
-            final CoinSystemExplorer explorer = new CoinSystemExplorer();
-            final List<Integer> optimalCoinSet = explorer.calculateBestCoinCombination();
-            System.out.println("Best combination uses these coins:");
-            System.out.println(optimalCoinSet.get(0) + ", " + optimalCoinSet.get(1) +", " 
-                             + optimalCoinSet.get(2) + ", " + optimalCoinSet.get(3));
-            System.out.println("With this combination, change between " + explorer.minChange + " and " 
-                             + explorer.maxChange + " cents can be made with " + optimalCoinSet.get(4) +" coins."); 
-        }
+        final CoinSystemExplorer explorer = new CoinSystemExplorer();
+        final List<Integer> optimalCoinSet = explorer.calculateBestCoinCombination();
+        System.out.println("Best combination uses these coins:");
+        System.out.println(optimalCoinSet.get(0) + ", " + optimalCoinSet.get(1) +", " 
+                         + optimalCoinSet.get(2) + ", " + optimalCoinSet.get(3));
+        System.out.println("With this combination, change between " + explorer.minChange + " and " 
+                         + explorer.maxChange + " cents can be made with " + optimalCoinSet.get(4) +" coins."); 
+    }
 
 
 }
