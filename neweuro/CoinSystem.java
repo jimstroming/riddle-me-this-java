@@ -53,6 +53,12 @@ public class CoinSystem {
         }
 
 
+        public Integer calculateNumberOfCoinsLessThanTarget(final Integer target, final Integer coinValue) {
+
+            return target / coinValue;
+
+        }
+
 
         public Integer calculateNumberOfCoins(final List<Integer> numberOfCoins) {
            
@@ -77,6 +83,8 @@ public class CoinSystem {
             System.out.println("This should be 7 coins");
 
             System.out.println("The number of coins is " + coinSystem.calculateNumberOfCoins(ninetySevenCents)); 
+
+            System.out.println("11 cents is > " + coinSystem.calculateNumberOfCoinsLessThanTarget(11, 5) + " nickels");
 
 
         }
