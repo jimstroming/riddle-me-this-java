@@ -25,7 +25,7 @@ public class CoinSystem {
             unsortedCoinValues.sort(Comparator.naturalOrder());
             Collections.reverse(unsortedCoinValues);
             this.coinValues = unsortedCoinValues;
-            coinValues.forEach(System.out::println);
+            this.coinValues.forEach(System.out::println);
 
             final Integer coinA = coinValues.get(0);
             final Integer coinB = coinValues.get(1);
