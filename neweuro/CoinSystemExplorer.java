@@ -18,7 +18,15 @@ public class CoinSystemExplorer {
     private final Integer minChange = 1;
 
     public List<Integer> calculateBestCoinCombination() {
-
+ 
+        Integer coin4 = 1;
+        for(Integer coin1 = 99; coin1 > 3; coin1--){
+            for(Integer coin2 = coin1 - 1; coin2 > 2; coin2--) {
+                for (Integer coin3 = coin2 - 1; coin3 > 1; coin3--) {
+                      System.out.println("dummy");             
+                }  
+            }
+        }
 
         return Arrays.asList(25,10,5,1,9);
 
