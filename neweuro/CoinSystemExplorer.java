@@ -52,6 +52,11 @@ public class CoinSystemExplorer {
                          + optimalCoinSet.get(2) + ", " + optimalCoinSet.get(3));
         System.out.println("With this combination, change between " + explorer.minChange + " and " 
                          + explorer.maxChange + " cents can be made with " + optimalCoinSet.get(4) +" coins."); 
+
+
+        final CoinSystem coinSystem = new CoinSystem(1,5,10,25);
+
+        System.out.println("Max number of coins for change with 1,5,10,25 is " + explorer.maxCoinsRequired(coinSystem));
     }
 
 
