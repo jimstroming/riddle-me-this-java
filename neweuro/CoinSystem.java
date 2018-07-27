@@ -31,16 +31,16 @@ public class CoinSystem {
         final private List<Integer> coinValues;
         final public List<List<Integer>> usefulCoinOrders;
 
-        public CoinSystem(final Integer coin1, final Integer coin2, final Integer coin3, final Integer coin4) {
+        public CoinSystem(final int coin1, final int coin2, final int coin3, final int coin4) {
             List<Integer> unsortedCoinValues = Arrays.asList(coin1, coin2, coin3, coin4);
             unsortedCoinValues.sort(Comparator.naturalOrder());
             Collections.reverse(unsortedCoinValues);
             this.coinValues = unsortedCoinValues;
 
-            final Integer coinA = coinValues.get(0);
-            final Integer coinB = coinValues.get(1);
-            final Integer coinC = coinValues.get(2);
-            final Integer coinLowest = coinValues.get(3);
+            final int coinA = coinValues.get(0);
+            final int coinB = coinValues.get(1);
+            final int coinC = coinValues.get(2);
+            final int coinLowest = coinValues.get(3);
 
             final List<Integer> abcd = Arrays.asList(coinA, coinB, coinC, coinLowest);
             final List<Integer> acbd = Arrays.asList(coinA, coinC, coinB, coinLowest);
@@ -55,7 +55,7 @@ public class CoinSystem {
 
 
 
-        public Integer calculateMinCoinsToReachTargetForCoinOrders(final Integer target) {
+        public int calculateMinCoinsToReachTargetForCoinOrders(final int target) {
             return this.usefulCoinOrders.stream()
                              .mapToInt(i -> calculateCoinsToReachTarget(target, i))       
                              .min()
@@ -63,13 +63,13 @@ public class CoinSystem {
         }
 
 
-        private Integer calculateCoinsToReachTarget(final Integer target, final List<Integer> coinOrder) {
+        private int calculateCoinsToReachTarget(final int target, final List<Integer> coinOrder) {
 
-            Integer totalNumberCoins = 0;
-            Integer remainder = target;
-            Integer coinNumber = 0;
-            Integer currentCoin; 
-            Integer numberOfCurrentCoin;           
+            int totalNumberCoins = 0;
+            int remainder = target;
+            int coinNumber = 0;
+            int currentCoin; 
+            int numberOfCurrentCoin;           
 
             while (remainder > 0) {
                 currentCoin = coinOrder.get(coinNumber);
@@ -83,7 +83,7 @@ public class CoinSystem {
 
         }
 
-        private Integer calculateCoinTotal(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
+        private int calculateCoinTotal(final List<Integer> coinValues, final List<Integer> numberOfCoins) {
 
             return IntStream.range(0, numberOfCoins.size())
                 .mapToObj(i -> coinValues.get(i) * numberOfCoins.get(i))
@@ -92,14 +92,14 @@ public class CoinSystem {
         }
 
 
-        private Integer calculateNumberOfCoinsLessThanEqualTarget(final Integer target, final Integer coinValue) {
+        private int calculateNumberOfCoinsLessThanEqualTarget(final int target, final int coinValue) {
 
             return target / coinValue;
 
         }
 
 
-        private Integer calculateNumberOfCoins(final List<Integer> numberOfCoins) {
+        private int calculateNumberOfCoins(final List<Integer> numberOfCoins) {
            
             return numberOfCoins.stream().reduce(0, Integer::sum);
 
@@ -115,7 +115,7 @@ public class CoinSystem {
             final List<Integer> ninetySevenCents = Arrays.asList(3, 2, 0, 2);
             final List<Integer> coinValues = Arrays.asList(25, 10, 5, 1);            
 
-            final Integer change = coinSystem.calculateCoinTotal(coinValues, ninetySevenCents);
+            final int change = coinSystem.calculateCoinTotal(coinValues, ninetySevenCents);
                        
             System.out.println("Total is " + change);
 

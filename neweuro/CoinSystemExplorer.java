@@ -14,20 +14,20 @@ import java.util.Collections;
 
 public class CoinSystemExplorer {
 
-    private final Integer maxChange = 99;
-    private final Integer minChange = 1;
+    private final int maxChange = 99;
+    private final int minChange = 1;
 
     public List<Integer> calculateBestCoinCombination() {
 
-        Integer leastCoinsRequired = 10000;
+        int leastCoinsRequired = 10000;
         List<Integer> bestCombination = Arrays.asList(0,0,0,0,leastCoinsRequired);
  
-        Integer coin4 = 1;
-        for(Integer coin1 = 99; coin1 > 3; coin1--){
-            for(Integer coin2 = coin1 - 1; coin2 > 2; coin2--) {
-                for (Integer coin3 = coin2 - 1; coin3 > 1; coin3--) {
+        int coin4 = 1;
+        for(int coin1 = 99; coin1 > 3; coin1--){
+            for(int coin2 = coin1 - 1; coin2 > 2; coin2--) {
+                for (int coin3 = coin2 - 1; coin3 > 1; coin3--) {
                       CoinSystem coinSystem = new CoinSystem(coin1, coin2, coin3, coin4);
-                      Integer coinsRequired = maxCoinsRequired(coinSystem); 
+                      int coinsRequired = maxCoinsRequired(coinSystem); 
 
                       if (coinsRequired < leastCoinsRequired) {
                           bestCombination = Arrays.asList(coin1, coin2, coin3, coin4, coinsRequired);
@@ -43,7 +43,7 @@ public class CoinSystemExplorer {
     }
 
     
-    public Integer maxCoinsRequired(CoinSystem coinSystem) {
+    public int maxCoinsRequired(CoinSystem coinSystem) {
 
         return IntStream.rangeClosed(minChange, maxChange)
                         .map(i -> coinSystem.calculateMinCoinsToReachTargetForCoinOrders(i))      
