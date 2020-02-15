@@ -6,8 +6,8 @@ class DiagonalDistanceCalculator implements DistanceCalculator {
 
   private final Point townHall;
 
-  DiagonalDistanceCalculator(final double townHallx, final double townHally) {
-    townHall = new Point(townHallx, townHally);
+  DiagonalDistanceCalculator(final Point townHall) {
+    this.townHall = new Point(townHall.x, townHall.y);
   }
 
   @Override

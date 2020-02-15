@@ -6,9 +6,9 @@ class Neighborhood {
  
   private final double townLengthWidth;
 
-  Neighborhood(final double townLengthWidth) {
+  Neighborhood(final double townLengthWidth, Point townHall) {
     this.townLengthWidth = townLengthWidth;
-    this.townHall = new Point(townLengthWidth/2, townLengthWidth/2);
+    this.townHall = new Point(townHall.x, townHall.y);
   }
 
   public boolean blockMethodOneIsCloserForThisWorker(final double workerHomex, final double workerHomey, 

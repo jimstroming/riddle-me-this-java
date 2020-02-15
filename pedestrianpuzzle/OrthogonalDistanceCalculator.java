@@ -4,8 +4,8 @@ class OrthogonalDistanceCalculator implements DistanceCalculator {
 
   private final Point townHall;
 
-  OrthogonalDistanceCalculator(final double townHallx, final double townHally) {
-    townHall = new Point(townHallx, townHally);
+  OrthogonalDistanceCalculator(final Point townHall) {
+    this.townHall = new Point(townHall.x, townHall.y);
   }
 
   @Override
