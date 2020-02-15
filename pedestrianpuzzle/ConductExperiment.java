@@ -17,13 +17,16 @@ class ConductExperiment {
 
     final double orthogonalMediumDistance = mediumOrthogonalCalculator.calculateDistance(50, 0);
     final double diagonalMediumDistance   = mediumDiagonalCalculator.calculateDistance(50, 0);
+    final boolean isOrthogonalCloserMedium = mediumNeighborhood.blockMethodOneIsCloserForThisWorker(50, 0,
+                                    mediumOrthogonalCalculator, mediumDiagonalCalculator);
+
 
 
     System.out.println("Neighborhood size is "+mediumNeighborhoodSize);
     System.out.println("Distance using orthogonal sidewalks is " + orthogonalMediumDistance);
     System.out.println("Distance using diagonal sidewalks is " + diagonalMediumDistance);
- 
-    
+    System.out.println("Is orthogonal closer? " + isOrthogonalCloserMedium);
+
     System.out.println("The End");  
 
 
