@@ -2,17 +2,15 @@ import java.lang.Math;
 
 class OrthogonalDistanceCalculator implements DistanceCalculator {
 
-  final double townHallx;
-  final double townHally;
+  private final Point townHall;
 
   OrthogonalDistanceCalculator(final double townHallx, final double townHally) {
-    this.townHallx = townHallx;
-    this.townHally = townHally;
+    townHall = new Point(townHallx, townHally);
   }
 
   @Override
   public double calculateDistance(final double homex, final double homey) {
-    return Math.abs(homex - townHallx) + Math.abs(homey - townHally);
+    return Math.abs(homex - townHall.x) + Math.abs(homey - townHall.y);
   }
 
 }
