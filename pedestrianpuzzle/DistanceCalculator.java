@@ -1,5 +1,5 @@
 interface DistanceCalculator{
 
-  public int calculateDistance(int homex, int homey);
+  public double calculateDistance(final double homex, final double homey);
 
 }
