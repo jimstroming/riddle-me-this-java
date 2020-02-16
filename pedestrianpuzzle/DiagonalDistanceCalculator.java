@@ -48,7 +48,7 @@ class DiagonalDistanceCalculator implements DistanceCalculator {
   private double recursiveCalculateDistance(final double workerHomex, final double workerHomey) {
     // System.out.println("x = " + workerHomex + " ; y = " + workerHomey 
     //                  + " goalx = " + townHall.x + " goaly = " + townHall.y);
-    if ((workerHomex == townHall.x) && (workerHomey == townHall.y)) return 0;
+    if ((Math.abs(workerHomex - townHall.x) <= 0.2) && (Math.abs(workerHomey - townHall.y) <= 0.2 )) return 0;
     if ((workerHomex >= townHall.x) && (workerHomey >= townHall.y)) {
       return 1 + recursiveCalculateDistance(workerHomex-0.5, workerHomey-0.5);
     }
